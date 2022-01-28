@@ -1,0 +1,21 @@
+.carnet{
+    height: 100vh;
+    background-image: url("../../image/fond.jpg");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_title{
+        color: white;
+        font-size: 3em;
+        padding: 1em;
+    }
+
+    &_main{
+        width : 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

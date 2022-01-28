@@ -1,17 +1,36 @@
 // == Import npm
-import React from 'react';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+
+// Import des composants
+import AddButton from "../AddButton";
+import List from "../List";
+import Add from "../Add";
 
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
+import "./styles.scss";
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
-  </div>
-);
+const App = () => {
+  return (
+    <div className="carnet">
+      <header className="carnet_title">
+        <h1>Carnet de films</h1>
+      </header>
+      <div className="carnet_main">
+        <Switch>
+          <Route path="/" exact>
+            <AddButton />
+            <List />
+          </Route>
+          <Route path="/add" exact>
+            <Add />
+          </Route>
+        </Switch>
+      </div>
+    </div>
+  );
+};
 
 // == Export
 export default App;
