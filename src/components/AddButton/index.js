@@ -12,7 +12,7 @@ const AddButton = () => {
 
   return (
     <div className="addbutton">
-      <button onClick={handleClick}>Ajouter un film</button>
+      <button className="button" onClick={handleClick}>Ajouter un film</button>
     </div>
   );
 };

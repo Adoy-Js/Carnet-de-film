@@ -1,0 +1,48 @@
+{
+  "movies": [
+    {
+      "name": "",
+      "date": "2022-01-04",
+      "viewer": [],
+      "score": 0,
+      "id": 1
+    },
+    {
+      "name": "nyhn",
+      "date": "2022-01-12",
+      "viewer": [
+        "Maxime"
+      ],
+      "score": "4",
+      "id": 2
+    },
+    {
+      "name": "test redirect",
+      "date": "2022-01-12",
+      "viewer": [
+        "Maxime"
+      ],
+      "score": "3",
+      "id": 3
+    },
+    {
+      "name": "test windows",
+      "date": "2022-01-20",
+      "viewer": [
+        "Maxime"
+      ],
+      "score": "3",
+      "id": 4
+    }
+  ],
+  "viewers": [
+    {
+      "id": 1,
+      "name": "Maxime"
+    },
+    {
+      "id": 2,
+      "name": "Jasmine"
+    }
+  ]
+}

@@ -1,20 +1,20 @@
-const paths = require('./paths');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const paths = require("./paths");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: [
     // SCSS
-    paths.src + '/styles/index.scss',
+    paths.src + "/styles/index.scss",
     // JS
-    paths.src + '/index.js',
+    paths.src + "/index.js",
   ],
   output: {
     path: paths.build,
-    publicPath: '/',
-    filename: 'js/[name].[contenthash].js',
+    publicPath: "/",
+    filename: "js/[name].[contenthash].js",
   },
   resolve: {
     alias: {
@@ -27,16 +27,16 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { 
+        {
           from: paths.static,
-          to: '',
-        }
+          to: "",
+        },
       ],
     }),
 
     new HtmlWebpackPlugin({
-      favicon: paths.assets + '/favicon.ico',
-      template: paths.assets + '/index.html',
+      favicon: paths.assets + "/favicon.ico",
+      template: paths.assets + "/index.html",
     }),
   ],
 
@@ -48,7 +48,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
               cacheDirectory: true,
             },
@@ -59,9 +59,9 @@ module.exports = {
       // Fonts
       {
         test: /\.(woff2?|eot|ttf|otf)$/,
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          outputPath: 'fonts/',
+          outputPath: "fonts/",
         },
       },
 
@@ -70,8 +70,8 @@ module.exports = {
         test: /\.(ico|gif|png|jpe?g|webp|svg)$/i,
         use: [
           {
-            loader: 'file-loader',
-            options: { outputPath: 'images/' },
+            loader: "file-loader",
+            options: { outputPath: "images/" },
           },
         ],
       },

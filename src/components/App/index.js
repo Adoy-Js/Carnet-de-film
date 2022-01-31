@@ -1,6 +1,7 @@
 // == Import npm
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import api from "src/api";
 
 // Import des composants
 import AddButton from "../AddButton";
@@ -10,8 +11,25 @@ import Add from "../Add";
 // == Import
 import "./styles.scss";
 
+//import datas
+
+
 // == Composant
 const App = () => {
+  const [moviesList, setMoviesList] = useState([]);
+  const [viewersList, setviewersList] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const movies = await api.get("/movies");
+    const viewers = await api.get("/viewers");
+    setMoviesList(movies.data);
+    setviewersList(viewers.data);
+  };
+
   return (
     <div className="carnet">
       <header className="carnet_title">
@@ -21,10 +39,10 @@ const App = () => {
         <Switch>
           <Route path="/" exact>
             <AddButton />
-            <List />
+            <List movies={moviesList} />
           </Route>
           <Route path="/add" exact>
-            <Add />
+            <Add viewers={viewersList} />
           </Route>
         </Switch>
       </div>
