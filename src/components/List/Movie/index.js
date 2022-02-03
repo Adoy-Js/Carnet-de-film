@@ -1,22 +1,29 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { FaStar } from "react-icons/fa";
 
 import "./styles.scss";
 
 import PropTypes from "prop-types";
 
 const Movie = ({ movies }) => {
-  const [rating, setRating] = useState(false);
-  
+  const getRating = (score) => {
+    return `${score / 5 * 100}%`;
+  };
+
   return (
     <>
       {movies?.map((movie) => (
         <li className="movie" key={movie.id}>
-          <div className="movie_date">{movie.date}</div>
+          <div className="movie_date">
+            {new Date(movie.date).toLocaleDateString()}
+          </div>
           <div className="movie_title">{movie.name}</div>
           <div className="movie_viewer">{movie.viewer}</div>
-          <div className="movie_score">{movie.score}</div>
+          <div className="stars-outer">
+            <div
+              className="stars-inner"
+              style={{ width: `${getRating(movie.score)}` }}
+            ></div>
+          </div>
         </li>
       ))}
     </>

@@ -1,0 +1,59 @@
+{
+  "movies": [
+    {
+      "name": "date",
+      "date": "2022-02-17T00:00:00.000Z",
+      "viewer": [
+        "Maxime"
+      ],
+      "score": "4",
+      "id": 1
+    },
+    {
+      "name": "hyhy",
+      "date": "2022-02-16",
+      "viewer": [
+        "Jasmine"
+      ],
+      "score": "3",
+      "id": 2
+    },
+    {
+      "name": "test number",
+      "date": "2022-02-18",
+      "viewer": [
+        "Jasmine"
+      ],
+      "score": "2.5",
+      "id": 3
+    },
+    {
+      "name": "sore test",
+      "date": "2022-02-01",
+      "viewer": [
+        "Jasmine"
+      ],
+      "score": "1",
+      "id": 4
+    },
+    {
+      "name": ",hj,hj,hj,hj,hjf,bsfvrdvrvee",
+      "date": "2022-02-08",
+      "viewer": [
+        "Maxime"
+      ],
+      "score": "1",
+      "id": 5
+    }
+  ],
+  "viewers": [
+    {
+      "id": 1,
+      "name": "Maxime"
+    },
+    {
+      "id": 2,
+      "name": "Jasmine"
+    }
+  ]
+}

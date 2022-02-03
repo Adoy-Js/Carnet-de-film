@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import api from "src/api";
-import { useHistory } from "react-router-dom";
 
 import "./styles.scss";
 
@@ -10,10 +9,6 @@ const Add = ({ viewers }) => {
   const [name, setName] = useState("");
   const [viewer, setViewer] = useState([]);
   const [score, setScore] = useState(0);
-
-  const [redirect, setRedirect] = useState(false);
-
-  const history = useHistory();
 
   const addMovieOnSubmit = async (e) => {
     e.preventDefault();
@@ -75,14 +70,13 @@ const Add = ({ viewers }) => {
         </div>
         <div className="addMovie_score">
           Note:
-          <select className="score" onChange={(e) => setScore(e.target.value)}>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <input
+            type="number"
+            min={0}
+            max={5}
+            step={0.5}
+            onChange={(e) => setScore(e.target.value)}
+          />
         </div>
         <button type="submit" className="submitButton">
           Ajouter
