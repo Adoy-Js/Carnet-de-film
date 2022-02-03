@@ -16,7 +16,7 @@ const Add = ({ viewers }) => {
       name: name,
       date: date,
       viewer: viewer,
-      score: score,
+      score: Number(score),
     });
     window.location.href = "http://localhost:8080/";
   };

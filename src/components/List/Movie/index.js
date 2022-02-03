@@ -1,30 +1,45 @@
 import React, { useState } from "react";
+import { FaStar, FaStarHalf } from "react-icons/fa";
 
 import "./styles.scss";
 
 import PropTypes from "prop-types";
 
 const Movie = ({ movies }) => {
-  const getRating = (score) => {
-    return `${score / 5 * 100}%`;
+  const getRating = (movie, score) => {
+    let starArray = [];
+    if (Number.isInteger(score)) {
+      for (let i = 0; i < score; i++) {
+        starArray.push(<FaStar color="yellow" />);
+      }
+    } else {
+      for (let i = 0; i < score - 1; i++) {
+        starArray.push(<FaStar color="yellow" />);
+      }
+      starArray.push(<FaStarHalf color="yellow" />);
+    }
+
+    return starArray;
   };
 
   return (
     <>
       {movies?.map((movie) => (
-        <li className="movie" key={movie.id}>
-          <div className="movie_date">
+        <tr className="movie" key={movie.id}>
+          <td className="movie_date">
             {new Date(movie.date).toLocaleDateString()}
-          </div>
-          <div className="movie_title">{movie.name}</div>
-          <div className="movie_viewer">{movie.viewer}</div>
-          <div className="stars-outer">
-            <div
-              className="stars-inner"
-              style={{ width: `${getRating(movie.score)}` }}
-            ></div>
-          </div>
-        </li>
+          </td>
+          <td className="movie_title">{movie.name}</td>
+          <td className="movie_viewer">{movie.viewer}</td>
+          <td className="movie_score">
+            <div className="star-white">
+              {[...Array(5)].map((star, index) => {
+                return <FaStar key={"white" + index} />;
+              })}
+            </div>
+            <div className="star-yellow">{getRating(movie, movie.score)}</div>
+          </td>
+        </tr>
       ))}
     </>
   );

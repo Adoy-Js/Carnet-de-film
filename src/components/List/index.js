@@ -7,11 +7,20 @@ import Movie from "./Movie";
 import PropTypes from "prop-types";
 
 const List = ({ movies }) => {
-
   return (
-    <ul className="list_movies">
-      <Movie movies={movies} />
-    </ul>
+    <table className="list_movies">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Titre</th>
+          <th>Vu par</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <Movie movies={movies} />
+      </tbody>
+    </table>
   );
 };
 
