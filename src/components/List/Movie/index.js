@@ -10,13 +10,13 @@ const Movie = ({ movies }) => {
     let starArray = [];
     if (Number.isInteger(score)) {
       for (let i = 0; i < score; i++) {
-        starArray.push(<FaStar color="yellow" />);
+        starArray.push(<FaStar color="yellow" key={"yellow" + i} />);
       }
     } else {
       for (let i = 0; i < score - 1; i++) {
-        starArray.push(<FaStar color="yellow" />);
+        starArray.push(<FaStar color="yellow" key={"yellow" + i} />);
       }
-      starArray.push(<FaStarHalf color="yellow" />);
+      starArray.push(<FaStarHalf color="yellow" key={movie.id} />);
     }
 
     return starArray;

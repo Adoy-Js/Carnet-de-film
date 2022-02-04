@@ -1,4 +1,4 @@
-.list_movies {
+.list-movies {
   margin-top: 2em;
   padding: 2em;
   width: 50%;
@@ -8,6 +8,10 @@
   & th{
     padding: 1.5em;
     font-size: 2em;
+    &:hover{
+      background-color: lightgray;
+      cursor: pointer;
+    }
   }
 
   & td{

@@ -23,10 +23,8 @@ const Add = ({ viewers }) => {
 
   const addViewer = (e) => {
     if (e.target.checked) {
-      console.log(e.target.value, "checked !");
-      setViewer((viewer) => [...viewer, e.target.value]);
+      setViewer((viewer) => [...viewer, e.target.value + " "]);
     } else {
-      console.log(e.target.value, "pas checked !");
       setViewer(viewer.filter((element) => element !== e.target.value));
     }
   };

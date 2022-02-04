@@ -1,22 +1,14 @@
 {
   "movies": [
     {
-      "name": "bfgb",
-      "date": "2022-02-23",
+      "name": "bgb",
+      "date": "2022-02-08",
       "viewer": [
-        "Maxime"
-      ],
-      "score": 4,
-      "id": 1
-    },
-    {
-      "name": "vffvf",
-      "date": "2022-02-23",
-      "viewer": [
-        "Maxime"
+        "Maxime ",
+        "Jasmine "
       ],
       "score": 1.5,
-      "id": 2
+      "id": 1
     }
   ],
   "viewers": [
