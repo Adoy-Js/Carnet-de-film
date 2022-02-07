@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { FaStar, FaStarHalf } from "react-icons/fa";
+import api from "src/api";
+
+import { FaStar, FaStarHalf, FaTrash } from "react-icons/fa";
 
 import "./styles.scss";
 
@@ -22,6 +24,11 @@ const Movie = ({ movies }) => {
     return starArray;
   };
 
+  const deleteMovie = async (id) => {
+    await api.delete(`/movies/${id}`);
+    window.location.href = "http://localhost:8080/";
+  };
+
   return (
     <>
       {movies?.map((movie) => (
@@ -38,6 +45,9 @@ const Movie = ({ movies }) => {
               })}
             </div>
             <div className="star-yellow">{getRating(movie, movie.score)}</div>
+          </td>
+          <td>
+            <FaTrash cursor={"pointer"} onClick={(e)=>deleteMovie(movie.id)} />
           </td>
         </tr>
       ))}

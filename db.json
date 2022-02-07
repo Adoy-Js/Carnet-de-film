@@ -1,14 +1,25 @@
 {
   "movies": [
     {
-      "name": "bgb",
-      "date": "2022-02-08",
+      "name": "vdvdvdv",
+      "date": "2022-02-07",
       "viewer": [
-        "Maxime ",
-        "Jasmine "
+        "Jasmine ",
+        "Jean-marc "
       ],
-      "score": 1.5,
+      "score": 4.5,
       "id": 1
+    },
+    {
+      "name": "vdvd",
+      "date": "2022-02-23",
+      "viewer": [
+        "Jasmine ",
+        "Maxime ",
+        "Jean-marc "
+      ],
+      "score": 2,
+      "id": 2
     }
   ],
   "viewers": [
@@ -19,6 +30,10 @@
     {
       "id": 2,
       "name": "Jasmine"
+    },
+    {
+      "name": "Jean-marc",
+      "id": 3
     }
   ]
 }

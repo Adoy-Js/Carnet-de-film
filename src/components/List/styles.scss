@@ -4,17 +4,47 @@
   width: 50%;
   background-color: grey;
   text-align: center;
-  
-  & th{
+
+  & th {
     padding: 1.5em;
     font-size: 2em;
-    &:hover{
+    text-transform: uppercase;
+    &:hover {
       background-color: lightgray;
       cursor: pointer;
     }
   }
 
-  & td{
+  & td {
     padding: 1em;
   }
 }
+
+
+@media screen and (max-width: 600px) {
+
+
+  table thead {
+    display: none;
+  }
+  
+  table tr {
+    border-bottom: 2px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    display: block;
+    font-size: .8em;
+    text-align: center;
+  }
+  
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    }
+  
+}
+

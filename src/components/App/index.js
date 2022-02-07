@@ -6,13 +6,14 @@ import api from "src/api";
 // Import des composants
 import AddButton from "../AddButton";
 import List from "../List";
-import Add from "../Add";
+import AddMovieForm from "../AddMovieForm";
+import HomeButton from "../HomeButton";
+import AddViewerForm from "../AddViewerForm";
 
 // == Import
 import "./styles.scss";
 
 //import datas
-
 
 // == Composant
 const App = () => {
@@ -41,8 +42,13 @@ const App = () => {
             <AddButton />
             <List movies={moviesList} />
           </Route>
-          <Route path="/add" exact>
-            <Add viewers={viewersList} />
+          <Route path="/add-movie" exact>
+            <HomeButton />
+            <AddMovieForm viewers={viewersList} />
+          </Route>
+          <Route path="/add-viewer" exact>
+            <HomeButton />
+            <AddViewerForm viewers={viewersList} />
           </Route>
         </Switch>
       </div>
