@@ -23,6 +23,9 @@
 
 @media screen and (max-width: 600px) {
 
+  .list-movies{
+    min-width: 80%;
+  }
 
   table thead {
     display: none;
@@ -30,15 +33,12 @@
   
   table tr {
     border-bottom: 2px solid #ddd;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: .625em;
   }
   
-  table td {
-    display: block;
-    font-size: .8em;
-    text-align: center;
-  }
   
   table td:before {
     content: attr(data-label);
