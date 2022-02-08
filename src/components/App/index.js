@@ -11,6 +11,7 @@ import HomeButton from "../HomeButton";
 import AddViewerForm from "../AddViewerForm";
 import Home from "../Home";
 import Signin from "../Signin";
+import Signup from "../Signup";
 
 // == Import
 import "./styles.scss";
@@ -31,6 +32,9 @@ const App = () => {
           </Route>
           <Route path="/signin" exact>
             <Signin />
+          </Route>
+          <Route path="/signup" exact>
+            <Signup />
           </Route>
           <Route path="/list" exact>
             <AddButton />

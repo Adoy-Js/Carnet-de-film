@@ -1,13 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "src/api";
 
-import { FaStar, FaStarHalfAlt, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 import "./styles.scss";
 
 import PropTypes from "prop-types";
 
 const Movie = ({ movies }) => {
+  const [viewers, setViewers] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const viewers = await api.get(
+      `/viewers?userId=${localStorage.getItem("userId")}`
+    );
+    setViewers(viewers.data);
+  };
+
+  const getViewersName = (viewersId) => {
+    let nameArray = [];
+    for (const viewerId of viewersId) {
+      const name = viewers.find(viewer=>viewer.id === viewerId).name;
+      nameArray.push(name+" ");
+    }
+    return nameArray
+  };
+
   const deleteMovie = async (id) => {
     await api.delete(`/movies/${id}`);
     window.location.href = "http://localhost:8080/list";
@@ -24,7 +46,7 @@ const Movie = ({ movies }) => {
             {movie.name}
           </td>
           <td className="movie_viewer" data-label="VU PAR">
-            {movie.viewer}
+            {getViewersName(movie.viewersId)}
           </td>
           <td
             style={{ "--rating": `${movie.score}` }}

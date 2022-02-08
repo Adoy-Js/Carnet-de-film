@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
 import api from "src/api";
 
 import "./styles.scss";
 
-const Signin = () => {
+const Signup = () => {
   const [usersList, setUsersList] = useState();
 
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
+
   const history = useHistory();
 
   useEffect(() => {
@@ -22,30 +22,22 @@ const Signin = () => {
     setUsersList(users.data);
   };
 
-  const signInOnSubmit = (e) => {
+  const signUpOnSubmit = (e) => {
     e.preventDefault();
     if (pseudo && password) {
-      const user = usersList.find((user) => user.pseudo === pseudo);
-      if (user) {
-        if (user.password === password) {
-          localStorage.setItem("userId", user.id);
-          history.push("/list");
-        } else {
-          window.alert("Mot de passe faux");
-          setPseudo();
-          setPassword();
-          e.target.reset();
-        }
-      } else {
-        window.alert("Compte inexistant");
-        setPseudo();
-        setPassword();
+      if (usersList.find((user) => user.pseudo === pseudo)) {
+        window.alert("pseudo deja pris");
         e.target.reset();
+      } else {
+        api.post("/users", {
+          pseudo: pseudo,
+          password: password,
+        });
+        window.alert("Compte crée");
+        window.location.href = "http://localhost:8080/";
       }
     } else {
       window.alert("Veuillez remplir tous les champs");
-      setPseudo();
-      setPassword();
       e.target.reset();
     }
   };
@@ -55,8 +47,8 @@ const Signin = () => {
   };
 
   return (
-    <div className="signin">
-      <form className="signin_form" onSubmit={(e) => signInOnSubmit(e)}>
+    <div className="signup">
+      <form className="signup_form" onSubmit={(e) => signUpOnSubmit(e)}>
         <div className="pseudo">
           <label htmlFor="pseudo">Pseudo</label>
           <input
@@ -73,7 +65,7 @@ const Signin = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Se connecter</button>
+        <button type="submit">Créer un compte</button>
       </form>
       <button className="signin_back-button" onClick={onClickBackButton}>
         Retour
@@ -82,4 +74,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;

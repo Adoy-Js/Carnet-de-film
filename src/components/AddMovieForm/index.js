@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import api from "src/api";
 
@@ -18,7 +18,7 @@ const AddMovieForm = () => {
 
   const fetchData = async () => {
     const viewers = await api.get(
-      `/viewers?userId=${localStorage.get("userId")}`
+      `/viewers?userId=${localStorage.getItem("userId")}`
     );
     setViewersList(viewers.data);
   };
@@ -28,17 +28,18 @@ const AddMovieForm = () => {
     await api.post("/movies", {
       name: name,
       date: date,
-      viewer: viewer,
+      viewersId: viewer,
       score: Number(score),
+      userId: Number(localStorage.getItem("userId")),
     });
     window.location.href = "http://localhost:8080/list";
   };
 
-  const addViewer = (e) => {
+  const addViewer = (e, viewerId) => {
     if (e.target.checked) {
-      setViewer((viewer) => [...viewer, e.target.value + " "]);
+      setViewer((viewer) => [...viewer, viewerId]);
     } else {
-      setViewer(viewer.filter((element) => element !== e.target.value));
+      setViewer(viewer.filter((element) => element !== viewerId));
     }
   };
 
@@ -66,13 +67,13 @@ const AddMovieForm = () => {
         <div className="addMovieForm-viewer">
           Qui l'a regardé ? :
           <ul className="viewersList">
-            {viewers.map((viewer) => (
+            {viewersList.map((viewer) => (
               <li key={viewer.id}>
                 <input
                   type="checkbox"
                   name="viewers"
                   value={viewer.name}
-                  onChange={(e) => addViewer(e)}
+                  onChange={(e) => addViewer(e, viewer.id)}
                 />
                 <label htmlFor={viewer.name}>{viewer.name}</label>
               </li>

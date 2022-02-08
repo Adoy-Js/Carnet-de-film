@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./styles.scss";
 
@@ -6,8 +6,11 @@ import Movie from "./Movie";
 
 import PropTypes from "prop-types";
 
-const List = ({ movies }) => {
-  const [moviesList, setMoviesList] = useState([]);
+import api from "src/api";
+
+const List = () => {
+  const [movies, setMovies] = useState([]);
+
 
   const [dateOrder, setDateOrder] = useState(true);
   const [titleOrder, setTitleOrder] = useState(true);
@@ -20,9 +23,9 @@ const List = ({ movies }) => {
 
   const fetchData = async () => {
     const movies = await api.get(
-      `/movies?userId=${localStorage.get("userId")}`
+      `/movies?userId=${localStorage.getItem("userId")}`
     );
-    setMoviesList(movies.data);
+    setMovies(movies.data);
   };
 
   const sortArrayBy = (array, sort, desc) => {
@@ -45,6 +48,9 @@ const List = ({ movies }) => {
         } else {
           sortArrayBy(movies, "date");
           setDateOrder(true);
+          setTitleOrder(false);
+          setScoreOrder(false);
+          setViewerOrder(false);
         }
 
         break;
@@ -55,6 +61,9 @@ const List = ({ movies }) => {
         } else {
           sortArrayBy(movies, "name", desc);
           setTitleOrder(true);
+          setDateOrder(false);
+          setScoreOrder(false);
+          setViewerOrder(false);
         }
         break;
       case "Vu par":
@@ -64,6 +73,9 @@ const List = ({ movies }) => {
         } else {
           sortArrayBy(movies, "viewer", desc);
           setViewerOrder(true);
+          setDateOrder(false);
+          setScoreOrder(false);
+          setTitleOrder(false);
         }
         break;
       case "Note":
@@ -73,6 +85,9 @@ const List = ({ movies }) => {
         } else {
           sortArrayBy(movies, "score", desc);
           setScoreOrder(true);
+          setDateOrder(false);
+          setTitleOrder(false);
+          setViewerOrder(false);
         }
         break;
 

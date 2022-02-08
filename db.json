@@ -1,9 +1,44 @@
 {
-  "movies": [],
-  "viewers": [
-    
+  "movies": [
+    {
+      "name": "fdfd",
+      "date": "2022-02-09",
+      "viewersId": [
+        1,
+        2
+      ],
+      "score": 1.5,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "sdfsdf",
+      "date": "2022-02-16",
+      "viewersId": [
+        2
+      ],
+      "score": 2.5,
+      "userId": 1,
+      "id": 2
+    }
   ],
-  "users":[
-
+  "viewers": [
+    {
+      "name": "maxime",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "jasmine",
+      "userId": 1,
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "pseudo": "Adoy",
+      "password": "adoysan",
+      "id": 1
+    }
   ]
 }

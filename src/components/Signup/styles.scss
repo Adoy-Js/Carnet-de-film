@@ -1,4 +1,4 @@
-.signin {
+.signup {
   width: 50%;
   min-height: 500px;
   min-width: 500px;
@@ -25,7 +25,7 @@
   }
 }
 @media screen and (max-width: 700px) {
-  .signin_form div {
+  .signup_form div {
     flex-direction: column;
   }
 }
