@@ -7,10 +7,23 @@ import Movie from "./Movie";
 import PropTypes from "prop-types";
 
 const List = ({ movies }) => {
+  const [moviesList, setMoviesList] = useState([]);
+
   const [dateOrder, setDateOrder] = useState(true);
   const [titleOrder, setTitleOrder] = useState(true);
   const [viewerOrder, setViewerOrder] = useState(true);
   const [scoreOrder, setScoreOrder] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const movies = await api.get(
+      `/movies?userId=${localStorage.get("userId")}`
+    );
+    setMoviesList(movies.data);
+  };
 
   const sortArrayBy = (array, sort, desc) => {
     array.sort(function (a, b) {

@@ -13,7 +13,7 @@ const AddViewerForm = ({ viewers }) => {
     await api.post("/viewers", {
       name: name,
     });
-    window.location.href = "http://localhost:8080/";
+    window.location.href = "http://localhost:8080/list";
   };
 
   return (

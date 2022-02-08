@@ -1,48 +1,9 @@
 {
-  "movies": [
-    {
-      "name": "vdvdvdv",
-      "date": "2022-02-07",
-      "viewer": [
-        "Jasmine ",
-        "Jean-marc "
-      ],
-      "score": 4.5,
-      "id": 1
-    },
-    {
-      "name": "vdvd",
-      "date": "2022-02-23",
-      "viewer": [
-        "Jasmine ",
-        "Maxime ",
-        "Jean-marc "
-      ],
-      "score": 2,
-      "id": 2
-    },
-    {
-      "name": "jk,,",
-      "date": "2022-02-15",
-      "viewer": [
-        "Maxime "
-      ],
-      "score": 2.5,
-      "id": 3
-    }
-  ],
+  "movies": [],
   "viewers": [
-    {
-      "id": 1,
-      "name": "Maxime"
-    },
-    {
-      "id": 2,
-      "name": "Jasmine"
-    },
-    {
-      "name": "Jean-marc",
-      "id": 3
-    }
+    
+  ],
+  "users":[
+
   ]
 }

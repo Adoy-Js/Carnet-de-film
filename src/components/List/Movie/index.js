@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 const Movie = ({ movies }) => {
   const deleteMovie = async (id) => {
     await api.delete(`/movies/${id}`);
-    window.location.href = "http://localhost:8080/";
+    window.location.href = "http://localhost:8080/list";
   };
 
   return (
