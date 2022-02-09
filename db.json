@@ -20,6 +20,14 @@
       "score": 2.5,
       "userId": 1,
       "id": 2
+    },
+    {
+      "name": "vrvr",
+      "date": "2022-02-01",
+      "viewersId": [],
+      "score": 2,
+      "userId": 0,
+      "id": 3
     }
   ],
   "viewers": [

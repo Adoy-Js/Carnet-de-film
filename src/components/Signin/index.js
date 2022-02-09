@@ -29,7 +29,7 @@ const Signin = () => {
       if (user) {
         if (user.password === password) {
           localStorage.setItem("userId", user.id);
-          history.push("/list");
+          window.location.href = "http://localhost:8080/list";
         } else {
           window.alert("Mot de passe faux");
           setPseudo();
