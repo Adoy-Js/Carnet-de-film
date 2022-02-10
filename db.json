@@ -1,18 +1,7 @@
 {
   "movies": [
     {
-      "name": "fdfd",
-      "date": "2022-02-09",
-      "viewersId": [
-        1,
-        2
-      ],
-      "score": 1.5,
-      "userId": 1,
-      "id": 1
-    },
-    {
-      "name": "sdfsdf",
+      "name": "frf",
       "date": "2022-02-16",
       "viewersId": [
         2
@@ -20,14 +9,6 @@
       "score": 2.5,
       "userId": 1,
       "id": 2
-    },
-    {
-      "name": "vrvr",
-      "date": "2022-02-01",
-      "viewersId": [],
-      "score": 2,
-      "userId": 0,
-      "id": 3
     }
   ],
   "viewers": [
@@ -40,6 +21,16 @@
       "name": "jasmine",
       "userId": 1,
       "id": 2
+    },
+    {
+      "name": "jean",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "name": "jasmine",
+      "userId": 2,
+      "id": 4
     }
   ],
   "users": [
@@ -47,6 +38,11 @@
       "pseudo": "Adoy",
       "password": "adoysan",
       "id": 1
+    },
+    {
+      "pseudo": "jaja",
+      "password": "unl49",
+      "id": 2
     }
   ]
 }

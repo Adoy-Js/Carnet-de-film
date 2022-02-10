@@ -1,5 +1,5 @@
 :root {
-  --star-size: 40px;
+  --star-size: 30px;
   --star-color: #fff;
   --star-background: #fc0;
 }
@@ -17,7 +17,7 @@
     font-size: var(--star-size);
 
     &::before {
-      content: "★★★★★";
+      content: "✦✦✦✦✦";
       background: linear-gradient(
         90deg,
         var(--star-background) var(--percent),
