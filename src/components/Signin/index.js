@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
+import myLocalStorage from "../../utils/localeStorage";
 
 import api from "src/api";
 
@@ -28,7 +28,7 @@ const Signin = () => {
       const user = usersList.find((user) => user.pseudo === pseudo);
       if (user) {
         if (user.password === password) {
-          localStorage.setItem("userId", user.id);
+          myLocalStorage.setItem("userId", user.id, 1000);
           window.location.href = "http://localhost:8080/list";
         } else {
           window.alert("Mot de passe faux");

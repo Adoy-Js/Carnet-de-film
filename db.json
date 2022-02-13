@@ -1,14 +1,14 @@
 {
   "movies": [
     {
-      "name": "frf",
-      "date": "2022-02-16",
+      "name": "oss 117",
+      "date": "2022-02-10",
       "viewersId": [
-        2
+        5
       ],
-      "score": 2.5,
-      "userId": 1,
-      "id": 2
+      "score": 4.5,
+      "userId": 3,
+      "id": 3
     }
   ],
   "viewers": [
@@ -31,6 +31,11 @@
       "name": "jasmine",
       "userId": 2,
       "id": 4
+    },
+    {
+      "name": "leila",
+      "userId": 3,
+      "id": 5
     }
   ],
   "users": [
@@ -43,6 +48,11 @@
       "pseudo": "jaja",
       "password": "unl49",
       "id": 2
+    },
+    {
+      "pseudo": "leila",
+      "password": "leila",
+      "id": 3
     }
   ]
 }

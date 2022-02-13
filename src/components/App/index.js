@@ -1,7 +1,6 @@
 // == Import npm
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import api from "src/api";
 
 // Import des composants
 import AddButton from "../AddButton";
@@ -12,6 +11,10 @@ import AddViewerForm from "../AddViewerForm";
 import Home from "../Home";
 import Signin from "../Signin";
 import Signup from "../Signup";
+import DisconnectButton from "../DisconnectButton";
+
+//import locaux
+import myLocalStorage from "../../utils/localeStorage";
 
 // == Import
 import "./styles.scss";
@@ -20,47 +23,37 @@ import "./styles.scss";
 
 // == Composant
 const App = () => {
-  const onClickDisconnect = () => {
-    localStorage.removeItem("userId");
-    window.location.href = "http://localhost:8080/";
-  };
 
   return (
     <div className="carnet">
       <header className="carnet_header">
         <h1 className="carnet_header_title">Carnet de films</h1>
-        {localStorage.getItem("userId") && (
-          <>
-            <button
-              className="carnet_header_disconnect"
-              onClick={(e) => onClickDisconnect()}
-            >
-              Se déconnecter
-            </button>
-          </>
-        )}
       </header>
       <div className="carnet_main">
-        {localStorage.getItem("userId") ? (
+        {myLocalStorage.getItem("userId") ? (
           <Switch>
             <Route path="/" exact>
-              <Home />
+              <Redirect to="/list" />
             </Route>
             <Route path="/signin" exact>
-              <Signin />
+              <Redirect to="/list" />
             </Route>
             <Route path="/signup" exact>
-              <Signup />
+              <Redirect to="/list" />
+              <List />
             </Route>
             <Route path="/list" exact>
+              <DisconnectButton />
               <AddButton />
               <List />
             </Route>
             <Route path="/add-movie" exact>
+              <DisconnectButton />
               <HomeButton />
               <AddMovieForm />
             </Route>
             <Route path="/add-viewer" exact>
+              <DisconnectButton />
               <HomeButton />
               <AddViewerForm />
             </Route>
@@ -77,13 +70,13 @@ const App = () => {
               <Signup />
             </Route>
             <Route path="/list" exact>
-              <Redirect Home />
+              <Redirect to="/" />
             </Route>
             <Route path="/add-movie" exact>
-            <Redirect Home />
+              <Redirect to="/" />
             </Route>
             <Route path="/add-viewer" exact>
-            <Redirect Home />
+              <Redirect to="/" />
             </Route>
           </Switch>
         )}
