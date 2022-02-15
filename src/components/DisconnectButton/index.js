@@ -11,7 +11,7 @@ const DisconnectButton = () => {
 
   return (
     <button
-      className="carnet_header_disconnect"
+      className="disconnect"
       onClick={(e) => onClickDisconnect()}
     >
       Se déconnecter

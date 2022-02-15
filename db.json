@@ -1,13 +1,13 @@
 {
   "movies": [
     {
-      "name": "oss 117",
-      "date": "2022-02-10",
+      "name": "vdfvfd",
+      "date": "2022-02-16",
       "viewersId": [
-        5
+        1
       ],
-      "score": 4.5,
-      "userId": 3,
+      "score": 2,
+      "userId": 1,
       "id": 3
     }
   ],
@@ -16,26 +16,6 @@
       "name": "maxime",
       "userId": 1,
       "id": 1
-    },
-    {
-      "name": "jasmine",
-      "userId": 1,
-      "id": 2
-    },
-    {
-      "name": "jean",
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "name": "jasmine",
-      "userId": 2,
-      "id": 4
-    },
-    {
-      "name": "leila",
-      "userId": 3,
-      "id": 5
     }
   ],
   "users": [
@@ -45,14 +25,9 @@
       "id": 1
     },
     {
-      "pseudo": "jaja",
-      "password": "unl49",
+      "pseudo": "jasmine",
+      "password": "jasmine",
       "id": 2
-    },
-    {
-      "pseudo": "leila",
-      "password": "leila",
-      "id": 3
     }
   ]
 }

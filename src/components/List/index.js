@@ -13,9 +13,9 @@ const List = () => {
 
 
   const [dateOrder, setDateOrder] = useState(true);
-  const [titleOrder, setTitleOrder] = useState(true);
-  const [viewerOrder, setViewerOrder] = useState(true);
-  const [scoreOrder, setScoreOrder] = useState(true);
+  const [titleOrder, setTitleOrder] = useState(false);
+  const [viewerOrder, setViewerOrder] = useState(false);
+  const [scoreOrder, setScoreOrder] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -23,7 +23,7 @@ const List = () => {
 
   const fetchData = async () => {
     const movies = await api.get(
-      `/movies?userId=${localStorage.getItem("userId")}`
+      `/movies?userId=${localStorage.getItem("userId")}&_sort=date&_order=desc`
     );
     setMovies(movies.data);
   };
@@ -43,23 +43,22 @@ const List = () => {
     switch (e.target.innerHTML) {
       case "Date":
         if (dateOrder) {
-          sortArrayBy(movies, "date", desc);
+          sortArrayBy(movies, "date");
           setDateOrder(false);
         } else {
-          sortArrayBy(movies, "date");
+          sortArrayBy(movies, "date", desc);
           setDateOrder(true);
           setTitleOrder(false);
           setScoreOrder(false);
           setViewerOrder(false);
         }
-
         break;
       case "Titre":
         if (titleOrder) {
-          sortArrayBy(movies, "name");
+          sortArrayBy(movies, "name", desc);
           setTitleOrder(false);
         } else {
-          sortArrayBy(movies, "name", desc);
+          sortArrayBy(movies, "name");
           setTitleOrder(true);
           setDateOrder(false);
           setScoreOrder(false);
