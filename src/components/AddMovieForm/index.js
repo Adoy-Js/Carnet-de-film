@@ -1,46 +1,32 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import api from "src/api";
+
+import jsonServer from "src/api/jsonServer";
+
+import axios from "axios";
 
 import "./styles.scss";
 
 const AddMovieForm = () => {
-  const [viewersList, setViewersList] = useState([]);
-
   const [date, setDate] = useState(null);
   const [name, setName] = useState("");
-  const [viewer, setViewer] = useState([]);
   const [score, setScore] = useState(0);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [moviesDate, setMoviesData] = useState([]);
 
-  const fetchData = async () => {
-    const viewers = await api.get(
-      `/viewers?userId=${localStorage.getItem("userId")}`
-    );
-    setViewersList(viewers.data);
-  };
-
+  useEffect(async () => {
+    const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=664c463bbf48d0b98f512bbb55bea7b2&query=${name}&language=fr-FR&sort_by=popularity.desc`);
+    setMoviesData(response.data.results);
+  }, [name]);
+  //https://www.themoviedb.org/t/p/w600_and_h900_bestv2//rLi9cokiFU20mLUPvQ0IRok3ELY.jpg
   const addMovieOnSubmit = async (e) => {
     e.preventDefault();
-    await api.post("/movies", {
+    await jsonServer.post("/movies", {
       name: name,
       date: date,
-      viewersId: viewer,
       score: Number(score),
       userId: Number(localStorage.getItem("userId")),
     });
     window.location.href = "http://localhost:8080/list";
-  };
-
-  const addViewer = (e, viewerId) => {
-    if (e.target.checked) {
-      setViewer((viewer) => [...viewer, viewerId]);
-    } else {
-      setViewer(viewer.filter((element) => element !== viewerId));
-    }
   };
 
   return (
@@ -63,22 +49,6 @@ const AddMovieForm = () => {
             className="name"
             onChange={(e) => setName(e.target.value)}
           />
-        </div>
-        <div className="addMovieForm-viewer">
-          Qui l'a regardé ? :
-          <ul className="viewersList">
-            {viewersList.map((viewer) => (
-              <li key={viewer.id}>
-                <input
-                  type="checkbox"
-                  name="viewers"
-                  value={viewer.name}
-                  onChange={(e) => addViewer(e, viewer.id)}
-                />
-                <label htmlFor={viewer.name}>{viewer.name}</label>
-              </li>
-            ))}
-          </ul>
         </div>
         <div className="addMovieForm-score">
           Note:
@@ -105,14 +75,6 @@ const AddMovieForm = () => {
       </form>
     </div>
   );
-};
-
-AddMovieForm.propTypes = {
-  viewers: PropTypes.array,
-};
-
-AddMovieForm.defaultProps = {
-  viewers: [],
 };
 
 export default AddMovieForm;

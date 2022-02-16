@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import myLocalStorage from "../../utils/localeStorage";
 
-import api from "src/api";
+import jsonServer from "src/api/jsonServer";
 
 import "./styles.scss";
 
@@ -18,7 +18,7 @@ const Signin = () => {
   }, []);
 
   const fetchData = async () => {
-    const users = await api.get("/users");
+    const users = await jsonServer.get("/users");
     setUsersList(users.data);
   };
 

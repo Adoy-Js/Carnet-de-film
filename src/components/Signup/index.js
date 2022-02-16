@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import api from "src/api";
+import jsonServer from "src/api/jsonServer";
 
 import "./styles.scss";
 
@@ -29,7 +29,7 @@ const Signup = () => {
         window.alert("pseudo deja pris");
         e.target.reset();
       } else {
-        api.post("/users", {
+        jsonServer.post("/users", {
           pseudo: pseudo,
           password: password,
         });

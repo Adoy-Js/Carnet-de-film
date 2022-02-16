@@ -1,5 +1,5 @@
 // == Import npm
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 // Import des composants
@@ -7,7 +7,6 @@ import AddButton from "../AddButton";
 import List from "../List";
 import AddMovieForm from "../AddMovieForm";
 import HomeButton from "../HomeButton";
-import AddViewerForm from "../AddViewerForm";
 import Home from "../Home";
 import Signin from "../Signin";
 import Signup from "../Signup";
@@ -23,7 +22,6 @@ import "./styles.scss";
 
 // == Composant
 const App = () => {
-
   return (
     <div className="carnet">
       <header className="carnet_header">
@@ -52,11 +50,6 @@ const App = () => {
               <HomeButton />
               <AddMovieForm />
             </Route>
-            <Route path="/add-viewer" exact>
-              <DisconnectButton />
-              <HomeButton />
-              <AddViewerForm />
-            </Route>
           </Switch>
         ) : (
           <Switch>
@@ -73,9 +66,6 @@ const App = () => {
               <Redirect to="/" />
             </Route>
             <Route path="/add-movie" exact>
-              <Redirect to="/" />
-            </Route>
-            <Route path="/add-viewer" exact>
               <Redirect to="/" />
             </Route>
           </Switch>

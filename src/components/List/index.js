@@ -4,9 +4,8 @@ import "./styles.scss";
 
 import Movie from "./Movie";
 
-import PropTypes from "prop-types";
 
-import api from "src/api";
+import jsonServer from "src/api/jsonServer";
 
 const List = () => {
   const [movies, setMovies] = useState([]);
@@ -14,7 +13,6 @@ const List = () => {
 
   const [dateOrder, setDateOrder] = useState(true);
   const [titleOrder, setTitleOrder] = useState(false);
-  const [viewerOrder, setViewerOrder] = useState(false);
   const [scoreOrder, setScoreOrder] = useState(false);
 
   useEffect(() => {
@@ -22,7 +20,7 @@ const List = () => {
   }, []);
 
   const fetchData = async () => {
-    const movies = await api.get(
+    const movies = await jsonServer.get(
       `/movies?userId=${localStorage.getItem("userId")}&_sort=date&_order=desc`
     );
     setMovies(movies.data);
@@ -65,18 +63,6 @@ const List = () => {
           setViewerOrder(false);
         }
         break;
-      case "Vu par":
-        if (viewerOrder) {
-          sortArrayBy(movies, "viewer");
-          setViewerOrder(false);
-        } else {
-          sortArrayBy(movies, "viewer", desc);
-          setViewerOrder(true);
-          setDateOrder(false);
-          setScoreOrder(false);
-          setTitleOrder(false);
-        }
-        break;
       case "Note":
         if (scoreOrder) {
           sortArrayBy(movies, "score");
@@ -105,9 +91,6 @@ const List = () => {
           <th className="list-movies_title" onClick={(e) => moviesOrder(e)}>
             Titre
           </th>
-          <th className="list-movies_viewer" onClick={(e) => moviesOrder(e)}>
-            Vu par
-          </th>
           <th className="list-movies_score" onClick={(e) => moviesOrder(e)}>
             Note
           </th>
@@ -118,14 +101,6 @@ const List = () => {
       </tbody>
     </table>
   );
-};
-
-List.protoTypes = {
-  moviesList: PropTypes.array,
-};
-
-List.defaulProps = {
-  moviesList: [],
 };
 
 export default List;
