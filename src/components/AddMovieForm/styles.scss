@@ -16,7 +16,7 @@
     justify-content: space-between;
     align-items: center;
 
-    div {
+    &_date, &_name, &_score {
       width: 70%;
       display: flex;
       justify-content: space-between;
@@ -26,14 +26,14 @@
       &_search {
         display: flex;
         flex-direction: column;
+        width: 50%;
         &_input{
-          font-size: 1.5rem;
+        font-size: 0.7em;
         }
         &_result {
           margin-top: 0.5em;
           &_li {
             margin-top: 0.5em;
-            width: 20em;
             &:hover {
               cursor: pointer;
               background-color: vars.$secondary-color;
@@ -50,5 +50,9 @@
   .add div {
     display: flex;
     flex-direction: column;
+  }
+
+  .addMovieForm_form_name_search_result_li{
+    min-width: 200px;
   }
 }
