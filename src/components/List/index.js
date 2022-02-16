@@ -48,7 +48,6 @@ const List = () => {
           setDateOrder(true);
           setTitleOrder(false);
           setScoreOrder(false);
-          setViewerOrder(false);
         }
         break;
       case "Titre":
@@ -60,7 +59,6 @@ const List = () => {
           setTitleOrder(true);
           setDateOrder(false);
           setScoreOrder(false);
-          setViewerOrder(false);
         }
         break;
       case "Note":
@@ -72,7 +70,6 @@ const List = () => {
           setScoreOrder(true);
           setDateOrder(false);
           setTitleOrder(false);
-          setViewerOrder(false);
         }
         break;
 

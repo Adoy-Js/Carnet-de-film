@@ -1,16 +1,5 @@
 {
-  "movies": [
-    {
-      "name": "vdfvfd",
-      "date": "2022-02-16",
-      "viewersId": [
-        1
-      ],
-      "score": 2,
-      "userId": 1,
-      "id": 3
-    }
-  ],
+  "movies": [],
   "users": [
     {
       "pseudo": "Adoy",

@@ -11,13 +11,15 @@ const AddMovieForm = () => {
   const [name, setName] = useState("");
   const [score, setScore] = useState(0);
 
-  const [moviesDate, setMoviesData] = useState([]);
+  const [moviesData, setMoviesData] = useState([]);
 
   useEffect(async () => {
-    const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=664c463bbf48d0b98f512bbb55bea7b2&query=${name}&language=fr-FR&sort_by=popularity.desc`);
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=664c463bbf48d0b98f512bbb55bea7b2&query=${name}&language=fr-FR&sort_by=popularity.desc`
+    );
     setMoviesData(response.data.results);
   }, [name]);
-  //https://www.themoviedb.org/t/p/w600_and_h900_bestv2//rLi9cokiFU20mLUPvQ0IRok3ELY.jpg
+
   const addMovieOnSubmit = async (e) => {
     e.preventDefault();
     await jsonServer.post("/movies", {
@@ -29,10 +31,14 @@ const AddMovieForm = () => {
     window.location.href = "http://localhost:8080/list";
   };
 
+  const onChangeValue = (e) => {
+    setName(e.target.innerText);
+  };
+
   return (
     <div className="addMovieForm">
-      <form onSubmit={(e) => addMovieOnSubmit(e)} className="addMovieForm-form">
-        <div className="addMovieForm-date">
+      <form onSubmit={(e) => addMovieOnSubmit(e)} className="addMovieForm_form">
+        <div className="addMovieForm_form_date">
           Date :
           <input
             type="date"
@@ -42,18 +48,38 @@ const AddMovieForm = () => {
             pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
           />
         </div>
-        <div className="addMovieForm-name">
+        <div className="addMovieForm_form_name">
           Titre :
-          <input
-            type="text"
-            className="name"
-            onChange={(e) => setName(e.target.value)}
-          />
+          <div className="addMovieForm_form_name_search">
+            <input
+              type="text"
+              className="addMovieForm_form_name_search_input"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Chercher un film"
+              value={name}
+            />
+            <div className="addMovieForm_form_name_search_result">
+              <ul>
+                {name
+                  ? moviesData
+                      .slice(0, 5)
+                      .map((movie) => (
+                        <li
+                          className="addMovieForm_form_name_search_result_li"
+                          key={movie.id}
+                          onClick={(e) => onChangeValue(e)}
+                        >{movie.title}</li>
+                      ))
+                  : "Résultats de la recherche"}
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="addMovieForm-score">
+
+        <div className="addMovieForm_form_score">
           Note:
           <select
-            name="addMovieForm-score-listScore"
+            name="addMovieForm_form_score_listScore"
             onChange={(e) => setScore(e.target.value)}
           >
             <option value="0">0</option>
