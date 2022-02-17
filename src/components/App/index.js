@@ -24,7 +24,6 @@ import "./styles.scss";
 
 // == Composant
 const App = () => {
-  const [user, setUser] = useState({});
 
   return (
     <div className="carnet">
@@ -57,12 +56,12 @@ const App = () => {
             <Route path="/search-list" exact>
               <DisconnectButton />
               <HomeButton />
-              <SearchList updateUser={setUser} />
+              <SearchList />
             </Route>
             <Route path={`/search-list/:pseudo`} exact>
               <DisconnectButton />
               <HomeButton />
-              <FriendList friendUser={user} />
+              <FriendList />
             </Route>
           </Switch>
         ) : (

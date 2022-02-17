@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./styles.scss";
-import PropTypes from "prop-types";
+
 import jsonServer from "src/api/jsonServer";
 
 import FriendMovie from "./FriendMovie";
 
-const FriendList = ({ friendUser }) => {
+const FriendList = () => {
 
   const [movies, setMovies] = useState([]);
+
+  const {pseudo} = useParams();
 
   const [dateOrder, setDateOrder] = useState(true);
   const [titleOrder, setTitleOrder] = useState(false);
@@ -15,9 +18,13 @@ const FriendList = ({ friendUser }) => {
 
   useEffect(async () => {
     const response = await jsonServer.get(
-      `/movies?userId=${friendUser.id}&_sort=date&_order=desc`
+      `/users?pseudo=${pseudo}&_sort=date&_order=desc`
     );
-    setMovies(response.data);
+    const user = response.data[0];
+    const userMovie = await jsonServer.get(
+      `/movies?userId=${user.id}&_sort=date&_order=desc`
+    );
+    setMovies(userMovie.data);
   }, []);
 
   const sortArrayBy = (array, sort, desc) => {
@@ -74,7 +81,7 @@ const FriendList = ({ friendUser }) => {
 
   return (
     <>
-      <h1 className="titleList">Liste de {friendUser.pseudo}</h1>
+      <h1 className="titleList">Liste de {pseudo}</h1>
       <table className="list-movies">
         <thead>
           <tr>
@@ -97,12 +104,5 @@ const FriendList = ({ friendUser }) => {
   );
 };
 
-FriendList.propTypes = {
-  friendUser: PropTypes.object,
-};
-
-FriendList.defaultProps = {
-  friendUser: {},
-};
 
 export default FriendList;
