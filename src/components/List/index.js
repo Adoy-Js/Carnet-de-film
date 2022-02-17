@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 import Movie from "./Movie";
-
 
 import jsonServer from "src/api/jsonServer";
 
 const List = () => {
   const [movies, setMovies] = useState([]);
-
 
   const [dateOrder, setDateOrder] = useState(true);
   const [titleOrder, setTitleOrder] = useState(false);
@@ -79,24 +77,37 @@ const List = () => {
   };
 
   return (
-    <table className="list-movies">
-      <thead>
-        <tr>
-          <th className="list-movies_date" onClick={(e) => moviesOrder(e)}>
-            Date
-          </th>
-          <th className="list-movies_title" onClick={(e) => moviesOrder(e)}>
-            Titre
-          </th>
-          <th className="list-movies_score" onClick={(e) => moviesOrder(e)}>
-            Note
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <Movie movies={movies} />
-      </tbody>
-    </table>
+    <>
+      <div className="addbutton">
+        <Link to={"/add-movie"}>
+          {" "}
+          <button className="button">Ajouter un film </button>
+        </Link>
+
+        <Link to={"/search-list"}>
+          {" "}
+          <button className="button"> Rechercher une liste </button>
+        </Link>
+      </div>
+      <table className="list-movies">
+        <thead>
+          <tr>
+            <th className="list-movies_date" onClick={(e) => moviesOrder(e)}>
+              Date
+            </th>
+            <th className="list-movies_title" onClick={(e) => moviesOrder(e)}>
+              Titre
+            </th>
+            <th className="list-movies_score" onClick={(e) => moviesOrder(e)}>
+              Note
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <Movie movies={movies} />
+        </tbody>
+      </table>
+    </>
   );
 };
 

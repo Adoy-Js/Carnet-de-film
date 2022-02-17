@@ -1,9 +1,8 @@
 // == Import npm
 import React, { useEffect, useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 // Import des composants
-import AddSearchButton from "../AddSearchButton";
 import List from "../List";
 import AddMovieForm from "../AddMovieForm";
 import HomeButton from "../HomeButton";
@@ -24,7 +23,6 @@ import "./styles.scss";
 
 // == Composant
 const App = () => {
-
   return (
     <div className="carnet">
       <header className="carnet_header">
@@ -32,62 +30,53 @@ const App = () => {
       </header>
       <div className="carnet_main">
         {myLocalStorage.getItem("userId") ? (
-          <Switch>
-            <Route path="/" exact>
-              <Redirect to="/list" />
-            </Route>
-            <Route path="/signin" exact>
-              <Redirect to="/list" />
-            </Route>
-            <Route path="/signup" exact>
-              <Redirect to="/list" />
-              <List />
-            </Route>
-            <Route path="/list" exact>
-              <DisconnectButton />
-              <AddSearchButton />
-              <List />
-            </Route>
-            <Route path="/add-movie" exact>
-              <DisconnectButton />
-              <HomeButton />
-              <AddMovieForm />
-            </Route>
-            <Route path="/search-list" exact>
-              <DisconnectButton />
-              <HomeButton />
-              <SearchList />
-            </Route>
-            <Route path={`/search-list/:pseudo`} exact>
-              <DisconnectButton />
-              <HomeButton />
-              <FriendList />
-            </Route>
-          </Switch>
+          <>
+            <DisconnectButton />
+            <Routes>
+              <Route path="/" element={<Navigate to="/list" />} />
+              <Route path="/signin" element={<Navigate to="/list" />} />
+              <Route path="/signup" element={<Navigate to="/list" />} />
+              <Route path="/list" element={<List />} />
+              <Route
+                path="/add-movie"
+                element={
+                  <>
+                    <HomeButton /> <AddMovieForm />
+                  </>
+                }
+              ></Route>
+              <Route
+                path="/search-list"
+                element={
+                  <>
+                    <HomeButton /> <SearchList />
+                  </>
+                }
+              ></Route>
+              <Route
+                path={`/search-list/:pseudo`}
+                element={
+                  <>
+                    <HomeButton />
+                    <FriendList />
+                  </>
+                }
+              ></Route>
+            </Routes>
+          </>
         ) : (
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/signin" exact>
-              <Signin />
-            </Route>
-            <Route path="/signup" exact>
-              <Signup />
-            </Route>
-            <Route path="/list" exact>
-              <Redirect to="/" />
-            </Route>
-            <Route path="/add-movie" exact>
-              <Redirect to="/" />
-            </Route>
-            <Route path="/search-list" exact>
-              <Redirect to="/" />
-            </Route>
-            <Route path={`/search-list/:pseudo`} exact>
-              <Redirect to="/" />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/list" element={<Navigate to="/" />} />
+            <Route path="/add-movie" element={<Navigate to="/" />} />
+            <Route path="/search-list" element={<Navigate to="/" />} />
+            <Route
+              path={`/search-list/:pseudo`}
+              element={<Navigate to="/" />}
+            />
+          </Routes>
         )}
       </div>
     </div>

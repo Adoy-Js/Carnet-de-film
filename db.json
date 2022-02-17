@@ -20,6 +20,13 @@
       "score": 2.5,
       "userId": 1,
       "id": 3
+    },
+    {
+      "name": "Harry Potter à l'école des sorciers",
+      "date": "2022-02-08",
+      "score": 2,
+      "userId": 1,
+      "id": 4
     }
   ],
   "users": [

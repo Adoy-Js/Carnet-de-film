@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import myLocalStorage from "../../utils/localeStorage";
 
 import jsonServer from "src/api/jsonServer";
@@ -11,8 +11,6 @@ const Signin = () => {
 
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
-  const history = useHistory();
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -50,10 +48,6 @@ const Signin = () => {
     }
   };
 
-  const onClickBackButton = () => {
-    history.push("/");
-  };
-
   return (
     <div className="signin">
       <form className="signin_form" onSubmit={(e) => signInOnSubmit(e)}>
@@ -75,9 +69,9 @@ const Signin = () => {
         </div>
         <button type="submit">Se connecter</button>
       </form>
-      <button className="signin_back-button" onClick={onClickBackButton}>
-        Retour
-      </button>
+      <Link style={{"alignSelf":"center"}} to={"/"}>
+        <button>Retour</button>
+      </Link>
     </div>
   );
 };

@@ -9,7 +9,6 @@ body {
 }
 
 button {
-  min-width: 200px;
   margin: 1em;
   background-color: vars.$secondary-color;
   border: 1px solid vars.$secondary-color;
@@ -24,6 +23,7 @@ button {
     color: vars.$secondary-color;
     border: 1px solid vars.$secondary-color;
   }
+
 }
 
 form button{

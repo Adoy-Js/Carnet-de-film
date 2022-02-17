@@ -4,13 +4,12 @@
   width: 50%;
   min-height: 500px;
   min-width: 500px;
-  background-color: vars.$primary-color;
-  border: 1px solid vars.$secondary-color;
   padding: 1em;
   font-size: 1.5em;
   display: flex;
   flex-direction: column;
   &_form {
+    border: 1px solid vars.$secondary-color;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -22,11 +21,9 @@
       justify-content: space-between;
     }
   }
-  &_back-button {
-    min-width: 20%;
-    align-self: center;
-  }
 }
+
+
 @media screen and (max-width: 700px) {
   .signin_form div {
     flex-direction: column;

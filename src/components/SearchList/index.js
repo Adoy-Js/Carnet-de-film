@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 import jsonServer from "src/api/jsonServer";
 
-const SearchList = ({ updateUser }) => {
+const SearchList = () => {
   const [user, setUser] = useState({});
   const [userSearch, setUserSearch] = useState("");
 
   const [message, setMessage] = useState("Résultats de la recherche");
 
-  const history = useHistory();
 
   const onClickSearch = async (e) => {
     e.preventDefault();
@@ -25,10 +23,7 @@ const SearchList = ({ updateUser }) => {
     }
   };
 
-  const onClickUserFounded = () => {
-    updateUser(user);
-    history.push(`/search-list/${user.pseudo}`);
-  };
+
 
   return (
     <div className="searchList">
@@ -40,8 +35,8 @@ const SearchList = ({ updateUser }) => {
           placeholder="Rechercher une liste"
         />
         {Object.keys(user).length ? (
-          <div className="searchList_form_result" onClick={onClickUserFounded}>
-            {message}
+          <div className="searchList_form_result">
+            <Link to={`/search-list/${user.pseudo}`}>{message}</Link>
           </div>
         ) : (
           <p className="searchList_form_noResult">{message}</p>
@@ -52,12 +47,6 @@ const SearchList = ({ updateUser }) => {
   );
 };
 
-SearchList.propTypes = {
-  updateUser: PropTypes.func,
-};
 
-SearchList.defaultProps = {
-  updateUser: () => {},
-};
 
 export default SearchList;

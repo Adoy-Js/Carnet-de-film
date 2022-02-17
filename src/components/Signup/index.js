@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import jsonServer from "src/api/jsonServer";
 
@@ -10,8 +10,6 @@ const Signup = () => {
 
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
-
-  const history = useHistory();
 
   useEffect(() => {
     fetchData();
@@ -42,10 +40,6 @@ const Signup = () => {
     }
   };
 
-  const onClickBackButton = () => {
-    history.push("/");
-  };
-
   return (
     <div className="signup">
       <form className="signup_form" onSubmit={(e) => signUpOnSubmit(e)}>
@@ -67,9 +61,9 @@ const Signup = () => {
         </div>
         <button type="submit">Créer un compte</button>
       </form>
-      <button className="signin_back-button" onClick={onClickBackButton}>
-        Retour
-      </button>
+      <Link style={{"alignSelf":"center"}} to={"/"}>
+        <button>Retour</button>
+      </Link>
     </div>
   );
 };
