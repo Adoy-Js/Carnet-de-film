@@ -18,7 +18,7 @@ const Signup = () => {
   }, []);
 
   const fetchData = async () => {
-    const users = await api.get("/users");
+    const users = await jsonServer.get("/users");
     setUsersList(users.data);
   };
 

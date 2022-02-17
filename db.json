@@ -1,5 +1,27 @@
 {
-  "movies": [],
+  "movies": [
+    {
+      "name": "Le Fabuleux Destin d'Amélie Poulain",
+      "date": "2022-03-01",
+      "score": 2,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "Avengers",
+      "date": "2022-02-08",
+      "score": 3,
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "name": "Blade Runner 2049",
+      "date": "2022-02-15",
+      "score": 2.5,
+      "userId": 1,
+      "id": 3
+    }
+  ],
   "users": [
     {
       "pseudo": "Adoy",

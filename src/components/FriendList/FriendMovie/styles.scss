@@ -1,0 +1,29 @@
+:root {
+  --star-size: 30px;
+  --star-color: #fff;
+  --star-background: #fc0;
+}
+
+.movie {
+  font-size: 1.5em;
+  padding: 1em;
+
+  &_score {
+    display: flex;
+    justify-content: center;
+    --percent: calc(var(--rating) / 5 * 100%);
+
+    font-size: var(--star-size);
+
+    &::before {
+      content: "✦✦✦✦✦";
+      background: linear-gradient(
+        90deg,
+        var(--star-background) var(--percent),
+        var(--star-color) var(--percent)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
