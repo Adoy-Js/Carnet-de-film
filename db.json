@@ -27,6 +27,13 @@
       "score": 2,
       "userId": 1,
       "id": 4
+    },
+    {
+      "name": "Shadow of the Tomb Raider",
+      "date": "2022-02-17",
+      "score": 3.5,
+      "userId": 3,
+      "id": 5
     }
   ],
   "users": [
@@ -39,6 +46,11 @@
       "pseudo": "jasmine",
       "password": "jasmine",
       "id": 2
+    },
+    {
+      "pseudo": "jeux",
+      "password": "jeux",
+      "id": 3
     }
   ]
 }

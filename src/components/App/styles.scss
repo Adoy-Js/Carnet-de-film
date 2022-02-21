@@ -1,22 +1,45 @@
-.carnet{
-    height: 100vh;
+@font-face {
+  font-family: "Middleearth";
+  src: url("/src/assets/fonts/Middleearth.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Disney";
+  src: url("/src/assets/fonts/disney.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Harry";
+  src: url("/src/assets/fonts/harry.ttf") format("truetype");
+}
+
+.carnet {
+ 
+
+  &_header {
+    padding: 1em;
+    &_title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 6em;
+      &_carnet {
+        font-family: "Middleearth";
+      }
+      &_de {
+        font-family: "Harry";
+      }
+      &_film {
+        font-family: "Disney";
+      }
+    }
+  }
+
+  &_main {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: auto;
-
-    &_header{ 
-        font-size: 3em;
-        padding: 1em;
-    }
-
-    &_main{
-        width : 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-       
-    }
+  }
 }
-

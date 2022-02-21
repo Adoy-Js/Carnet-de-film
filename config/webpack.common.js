@@ -65,6 +65,19 @@ module.exports = {
         },
       },
 
+      // video
+      {
+        test: /\.(mov|mp4)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }  
+          }
+        ]
+      },
+
       // Images
       {
         test: /\.(ico|gif|png|jpe?g|webp|svg)$/i,

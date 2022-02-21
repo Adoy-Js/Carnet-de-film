@@ -7,8 +7,6 @@ import List from "../List";
 import AddMovieForm from "../AddMovieForm";
 import HomeButton from "../HomeButton";
 import Home from "../Home";
-import Signin from "../Signin";
-import Signup from "../Signup";
 import DisconnectButton from "../DisconnectButton";
 import SearchList from "../SearchList";
 import FriendList from "../FriendList";
@@ -26,7 +24,11 @@ const App = () => {
   return (
     <div className="carnet">
       <header className="carnet_header">
-        <h1 className="carnet_header_title">Carnet de films</h1>
+        <h1 className="carnet_header_title">
+          <span className="carnet_header_title_carnet">Carnet</span>{" "}
+          <span className="carnet_header_title_de">de </span>
+          <span className="carnet_header_title_film">films</span>{" "}
+        </h1>
       </header>
       <div className="carnet_main">
         {myLocalStorage.getItem("userId") ? (
@@ -34,8 +36,6 @@ const App = () => {
             <DisconnectButton />
             <Routes>
               <Route path="/" element={<Navigate to="/list" />} />
-              <Route path="/signin" element={<Navigate to="/list" />} />
-              <Route path="/signup" element={<Navigate to="/list" />} />
               <Route path="/list" element={<List />} />
               <Route
                 path="/add-movie"
@@ -67,8 +67,6 @@ const App = () => {
         ) : (
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/signup" element={<Signup />} />
             <Route path="/list" element={<Navigate to="/" />} />
             <Route path="/add-movie" element={<Navigate to="/" />} />
             <Route path="/search-list" element={<Navigate to="/" />} />
