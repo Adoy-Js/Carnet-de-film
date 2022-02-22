@@ -1,21 +1,4 @@
-@font-face {
-  font-family: "Middleearth";
-  src: url("/src/assets/fonts/Middleearth.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Disney";
-  src: url("/src/assets/fonts/disney.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Harry";
-  src: url("/src/assets/fonts/harry.ttf") format("truetype");
-}
-
 .carnet {
- 
-
   &_header {
     padding: 1em;
     &_title {
