@@ -28,7 +28,7 @@ const AddMovieForm = () => {
       score: Number(score),
       userId: Number(localStorage.getItem("userId")),
     });
-    window.location.href = "https://carnet-de-films.netlify.app/list";
+    window.location.href = "http://localhost:8080/list";
   };
 
   const onChangeValue = (e) => {

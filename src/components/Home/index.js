@@ -32,7 +32,7 @@ const Home = () => {
       if (user) {
         if (user.password === password) {
           myLocalStorage.setItem("userId", user.id, 1000);
-          window.location.href = "https://carnet-de-films.netlify.app/list";
+          window.location.href = "http://localhost:8080/list";
         } else {
           window.alert("Mot de passe faux");
           setPseudo();

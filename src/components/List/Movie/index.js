@@ -11,7 +11,7 @@ const Movie = ({ movies }) => {
 
   const deleteMovie = async (id) => {
     await jsonServer.delete(`/movies/${id}`);
-    window.location.href = "https://carnet-de-films.netlify.app/list";
+    window.location.href = "http://localhost:8080/list";
   };
 
   return (
