@@ -59,7 +59,7 @@ module.exports = {
       // Fonts
       {
         test: /\.(woff2?|eot|ttf|otf)$/,
-        type: 'asset/resource'
+        type: "asset/resource",
       },
 
       // video
@@ -67,12 +67,12 @@ module.exports = {
         test: /\.(mov|mp4)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]'
-            }  
-          }
-        ]
+              name: "[name].[ext]",
+            },
+          },
+        ],
       },
 
       // Images
