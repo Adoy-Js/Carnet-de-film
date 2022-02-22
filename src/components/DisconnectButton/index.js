@@ -6,7 +6,7 @@ import "./styles.scss";
 const DisconnectButton = () => {
   const onClickDisconnect = () => {
     myLocalStorage.removeItem("userId");
-    window.location.href = "http://localhost:8080/";
+    window.location.href = "https://carnet-de-films.netlify.app/";
   };
 
   return (
