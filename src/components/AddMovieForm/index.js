@@ -59,13 +59,13 @@ const AddMovieForm = () => {
               value={name}
             />
             <div className="addMovieForm_form_name_search_result">
-              <ul>
+              <ul className="addMovieForm_form_name_search_result_ul">
                 {name
                   ? moviesData
                       .slice(0, 5)
                       .map((movie) => (
                         <li
-                          className="addMovieForm_form_name_search_result_li"
+                          className="addMovieForm_form_name_search_result_ul_li"
                           key={movie.id}
                           onClick={(e) => onChangeValue(e)}
                         >{movie.title}</li>

@@ -2,8 +2,7 @@
 
 .addMovieForm {
   width: 50%;
-  height: 70%;
-  min-height: 500px;
+  height: 400px;
   min-width: 500px;
   background-color: vars.$primary-color;
   border: 1px solid vars.$secondary-color;
@@ -15,29 +14,33 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    &_date, &_name, &_score {
+    &_date,
+    &_name,
+    &_score {
       width: 70%;
       display: flex;
       justify-content: space-between;
     }
 
     &_name {
+      height: 150px;
       &_search {
         display: flex;
         flex-direction: column;
         width: 50%;
-        &_input{
-        font-size: 0.7em;
+        &_input {
+          font-size: 0.7em;
         }
         &_result {
           margin-top: 0.5em;
-          &_li {
-            margin-top: 0.5em;
-            &:hover {
-              cursor: pointer;
-              background-color: vars.$secondary-color;
-              color: vars.$primary-color;
+          &_ul {
+            position: absolute;
+            &_li {
+              &:hover {
+                cursor: pointer;
+                background-color: vars.$secondary-color;
+                color: vars.$primary-color;
+              }
             }
           }
         }
@@ -52,7 +55,7 @@
     flex-direction: column;
   }
 
-  .addMovieForm_form_name_search_result_li{
+  .addMovieForm_form_name_search_result_li {
     min-width: 200px;
   }
 }
