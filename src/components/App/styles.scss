@@ -1,36 +1,9 @@
-@font-face {
-  font-family: "middleearth";
-  src: url("/src/fonts/middleearth.ttf") format("truetype");
-}
-@font-face {
-  font-family: "disney";
-  src: url("/src/fonts/disney.ttf") format("truetype");
-}
-@font-face {
-  font-family: "harry";
-  src: url("/src/fonts/harry.ttf") format("truetype");
-}
-
 .carnet {
-  &_header {
-    padding: 1em;
-    &_title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 5em;
-      &_carnet {
-        font-family: "Middleearth";
-      }
-      &_de {
-        font-family: "Harry";
-      }
-      &_film {
-        font-family: "Disney";
-      }
-    }
+  &_image {
+    position: absolute;
+    height: 100vh;
+    z-index: -1;
   }
-
   &_main {
     width: 100%;
     height: 100%;

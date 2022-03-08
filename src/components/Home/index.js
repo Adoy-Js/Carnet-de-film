@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
-
 import "./styles.scss";
 
-import projector from "./video/projector.mp4";
 import myLocalStorage from "../../utils/localeStorage";
 import jsonServer from "src/api/jsonServer";
 
@@ -87,9 +84,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      <video autoPlay loop muted id="video">
-        <source src={projector} type="video/mp4" />
-      </video>
       <div className="home_buttons">
         <button className="home_buttons_signin" onClick={onClickSignIn}>
           Se Connecter

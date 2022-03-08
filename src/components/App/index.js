@@ -10,9 +10,11 @@ import Home from "../Home";
 import DisconnectButton from "../DisconnectButton";
 import SearchList from "../SearchList";
 import FriendList from "../FriendList";
+import Header from "../Header";
 
 //import locaux
 import myLocalStorage from "../../utils/localeStorage";
+import carnet from "/src/images/carnet.jpg";
 
 // == Import
 import "./styles.scss";
@@ -23,13 +25,8 @@ import "./styles.scss";
 const App = () => {
   return (
     <div className="carnet">
-      <header className="carnet_header">
-        <h1 className="carnet_header_title">
-          <span className="carnet_header_title_carnet">Carnet</span>{" "}
-          <span className="carnet_header_title_de">de </span>
-          <span className="carnet_header_title_film">films</span>{" "}
-        </h1>
-      </header>
+      <img className="carnet_image" src={carnet}></img>
+      <Header />
       <div className="carnet_main">
         {myLocalStorage.getItem("userId") ? (
           <>
