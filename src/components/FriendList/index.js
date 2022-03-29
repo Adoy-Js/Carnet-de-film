@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.scss";
 
-import jsonServer from "src/api/jsonServer";
+import api from "src/api";
 
 import FriendMovie from "./FriendMovie";
 
@@ -17,11 +17,11 @@ const FriendList = () => {
   const [scoreOrder, setScoreOrder] = useState(false);
 
   useEffect(async () => {
-    const response = await jsonServer.get(
+    const response = await api.get(
       `/users?pseudo=${pseudo}&_sort=date&_order=desc`
     );
     const user = response.data[0];
-    const userMovie = await jsonServer.get(
+    const userMovie = await api.get(
       `/movies?userId=${user.id}&_sort=date&_order=desc`
     );
     setMovies(userMovie.data);

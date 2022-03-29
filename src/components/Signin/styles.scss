@@ -1,0 +1,21 @@
+.signin {
+  font-size: 1.5em;
+  &_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    width: 500px;
+    &_pseudo,
+    &_password {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .signin_form div {
+    flex-direction: column;
+  }
+}

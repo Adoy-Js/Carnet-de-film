@@ -4,7 +4,7 @@ import "./styles.scss";
 
 import Movie from "./Movie";
 
-import jsonServer from "src/api/jsonServer";
+import api from "src/api";
 
 const List = () => {
   const [movies, setMovies] = useState([]);
@@ -18,9 +18,9 @@ const List = () => {
   }, []);
 
   const fetchData = async () => {
-    const movies = await jsonServer.get(
-      `/movies?userId=${localStorage.getItem("userId")}&_sort=date&_order=desc`
-    );
+    // const movies = await jsonServer.get(
+    //   `/movies?userId=${localStorage.getItem("userId")}&_sort=date&_order=desc`
+    // );
     setMovies(movies.data);
   };
 

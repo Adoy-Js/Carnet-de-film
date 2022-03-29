@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import jsonServer from "src/api/jsonServer";
+import api from "src/api";
 
 import { FaTrash } from "react-icons/fa";
 
@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 const Movie = ({ movies }) => {
 
   const deleteMovie = async (id) => {
-    await jsonServer.delete(`/movies/${id}`);
+    // await jsonServer.delete(`/movies/${id}`);
     window.location.href = "http://localhost:8080/list";
   };
 

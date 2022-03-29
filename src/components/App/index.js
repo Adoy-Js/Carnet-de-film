@@ -1,6 +1,7 @@
 // == Import npm
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 // Import des composants
 import List from "../List";
@@ -11,9 +12,10 @@ import DisconnectButton from "../DisconnectButton";
 import SearchList from "../SearchList";
 import FriendList from "../FriendList";
 import Header from "../Header";
+import Signin from "../Signin";
+import Signup from "../Signup";
 
 //import locaux
-import myLocalStorage from "../../utils/localeStorage";
 import carnet from "/src/images/carnet.jpg";
 
 // == Import
@@ -23,12 +25,13 @@ import "./styles.scss";
 
 // == Composant
 const App = () => {
+  const [cookies, setCookie] = useCookies();
+
   return (
     <div className="carnet">
-      <img className="carnet_image" src={carnet}></img>
       <Header />
       <div className="carnet_main">
-        {myLocalStorage.getItem("userId") ? (
+        {cookies.access_token ? (
           <>
             <DisconnectButton />
             <Routes>
@@ -63,6 +66,8 @@ const App = () => {
           </>
         ) : (
           <Routes>
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Home />} />
             <Route path="/list" element={<Navigate to="/" />} />
             <Route path="/add-movie" element={<Navigate to="/" />} />

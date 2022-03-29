@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import jsonServer from "src/api/jsonServer";
+import api from "src/api";
 
 import axios from "axios";
 

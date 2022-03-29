@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
-import jsonServer from "src/api/jsonServer";
+import api from "src/api";
 
 const SearchList = () => {
   const [user, setUser] = useState({});
@@ -13,7 +13,7 @@ const SearchList = () => {
 
   const onClickSearch = async (e) => {
     e.preventDefault();
-    const response = await jsonServer.get(`/users?pseudo=${userSearch}`);
+    // const response = await jsonServer.get(`/users?pseudo=${userSearch}`);
     if (!response.data.length) {
       setUser({});
       setMessage("Compte inexistant");
