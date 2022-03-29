@@ -1,28 +1,35 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import api from "src/api";
 
 import "./styles.scss";
 
 const Signup = () => {
-  const [usersList, setUsersList] = useState();
+  const navigate = useNavigate();
+
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
 
-  const signUpOnSubmit = (e) => {
+  const [message, setMessage] = useState();
+
+  const signUpOnSubmit = async (e) => {
     e.preventDefault();
-    if (pseudo && password) {
-      if (usersList.find((user) => user.pseudo === pseudo)) {
-        window.alert("pseudo deja pris");
-        e.target.reset();
+    if (pseudo && password && email) {
+      const response = await api.post("/signup", {
+        email,
+        pseudo,
+        password,
+      });
+      if (response.data.user) {
+        console.log(response.data);
+        navigate("/");
       } else {
-        jsonServer.post("/users", {
-          pseudo: pseudo,
-          password: password,
-        });
-        window.alert("Compte crée");
-        window.location.href = "http://localhost:8080/";
+        setMessage(response.data.message);
       }
     } else {
-      window.alert("Veuillez remplir tous les champs");
+      setMessage("Veuillez remplir tous les champs");
       e.target.reset();
     }
   };
@@ -30,6 +37,14 @@ const Signup = () => {
   return (
     <div className="signup">
       <form className="signup_form" onSubmit={(e) => signUpOnSubmit(e)}>
+        <div className="signup_form_email">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
         <div className="signup_form_pseudo">
           <label htmlFor="pseudo">Pseudo</label>
           <input
@@ -47,6 +62,7 @@ const Signup = () => {
           />
         </div>
         <button type="submit">Créer un compte</button>
+        <p>{message}</p>
       </form>
     </div>
   );

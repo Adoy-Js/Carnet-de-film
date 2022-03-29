@@ -1,18 +1,20 @@
 import React from "react";
+import { useCookies } from "react-cookie";
+
+import api from "src/api";
 
 import "./styles.scss";
 
 const DisconnectButton = () => {
-  const onClickDisconnect = () => {
-    // myLocalStorage.removeItem("userId");
-    window.location.href = "http://localhost:8080/";
+
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+
+  const onClickDisconnect = async () => {
+    removeCookie("token");
   };
 
   return (
-    <button
-      className="disconnect"
-      onClick={(e) => onClickDisconnect()}
-    >
+    <button className="disconnect" onClick={(e) => onClickDisconnect()}>
       Se déconnecter
     </button>
   );

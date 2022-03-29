@@ -31,11 +31,15 @@ const App = () => {
     <div className="carnet">
       <Header />
       <div className="carnet_main">
-        {cookies.access_token ? (
+        {cookies.token ? (
           <>
             <DisconnectButton />
             <Routes>
-              <Route path="/" element={<Navigate to="/list" />} />
+              <Route
+                path="/"
+                element={<Navigate to="/list" />}
+                cookies={cookies}
+              />
               <Route path="/list" element={<List />} />
               <Route
                 path="/add-movie"
@@ -62,6 +66,8 @@ const App = () => {
                   </>
                 }
               ></Route>
+              <Route path="/signin" element={<Navigate to="/list" />} />
+              <Route path="/signup" element={<Navigate to="/list" />} />
             </Routes>
           </>
         ) : (
