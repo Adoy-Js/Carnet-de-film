@@ -7,10 +7,11 @@ import "./styles.scss";
 
 const DisconnectButton = () => {
 
-  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   const onClickDisconnect = async () => {
     removeCookie("token");
+    removeCookie("userId");
   };
 
   return (

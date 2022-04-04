@@ -8,9 +8,8 @@ import "./styles.scss";
 import PropTypes from "prop-types";
 
 const Movie = ({ movies }) => {
-
   const deleteMovie = async (id) => {
-    // await jsonServer.delete(`/movies/${id}`);
+    await api.delete(`/delete-movie/${id}`, { withCredentials: true });
     window.location.href = "http://localhost:8080/list";
   };
 
@@ -19,7 +18,7 @@ const Movie = ({ movies }) => {
       {movies?.map((movie) => (
         <tr className="movie" key={movie.id}>
           <td className="movie_date" data-label="DATE">
-            {new Date(movie.date).toLocaleDateString()}
+            {movie.date}
           </td>
           <td className="movie_title" data-label="TITRE">
             {movie.name}

@@ -18,10 +18,21 @@ const List = () => {
   }, []);
 
   const fetchData = async () => {
-    // const movies = await jsonServer.get(
-    //   `/movies?userId=${localStorage.getItem("userId")}&_sort=date&_order=desc`
-    // );
-    setMovies(movies.data);
+    const movies = await api.get(`/list`, { withCredentials: true });
+    console.log(movies.data.moviesUser.Movies);
+    const moviesArray = movies.data.moviesUser.Movies;
+    let newMoviesArray = [];
+    for (const movie of moviesArray) {
+      const date = new Date(movie.User_movie.date).toLocaleDateString("fr");
+      const movieObject = {
+        id: movie.id,
+        date,
+        name: movie.name,
+        score: Number(movie.User_movie.score),
+      };
+      newMoviesArray.push(movieObject);
+    }
+    setMovies(newMoviesArray);
   };
 
   const sortArrayBy = (array, sort, desc) => {

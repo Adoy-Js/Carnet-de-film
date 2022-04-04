@@ -20,14 +20,16 @@ const Signin = () => {
         email,
         password,
       });
+      console.log(response.data.user);
+      const userId = response.data.user.id;
       if (response.data.user) {
         const result = await api.get("/auth", {
           withCredentials: true,
           headers: {
-            user: response.data.user,
+            userId,
           },
         });
-        console.log(result);
+        console.log(result.data);
         location.reload();
       } else {
         setMessage(response.data.message);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 
 import api from "src/api";
 
@@ -7,6 +8,8 @@ import axios from "axios";
 import "./styles.scss";
 
 const AddMovieForm = () => {
+  const [cookies, setCookie, removeCookie] = useCookies();
+
   const [date, setDate] = useState(null);
   const [name, setName] = useState("");
   const [score, setScore] = useState(0);
@@ -22,12 +25,16 @@ const AddMovieForm = () => {
 
   const addMovieOnSubmit = async (e) => {
     e.preventDefault();
-    await jsonServer.post("/movies", {
-      name: name,
-      date: date,
-      score: Number(score),
-      userId: Number(localStorage.getItem("userId")),
-    });
+    await api.post(
+      "/add-movie",
+      {
+        userId: cookies.userId,
+        name: name,
+        date: date,
+        score: Number(score),
+      },
+      { withCredentials: true }
+    );
     window.location.href = "http://localhost:8080/list";
   };
 
@@ -61,15 +68,15 @@ const AddMovieForm = () => {
             <div className="addMovieForm_form_name_search_result">
               <ul className="addMovieForm_form_name_search_result_ul">
                 {name
-                  ? moviesData
-                      .slice(0, 5)
-                      .map((movie) => (
-                        <li
-                          className="addMovieForm_form_name_search_result_ul_li"
-                          key={movie.id}
-                          onClick={(e) => onChangeValue(e)}
-                        >{movie.title}</li>
-                      ))
+                  ? moviesData.slice(0, 5).map((movie) => (
+                      <li
+                        className="addMovieForm_form_name_search_result_ul_li"
+                        key={movie.id}
+                        onClick={(e) => onChangeValue(e)}
+                      >
+                        {movie.title}
+                      </li>
+                    ))
                   : "Résultats de la recherche"}
               </ul>
             </div>
