@@ -10,20 +10,26 @@ const SearchList = () => {
 
   const [message, setMessage] = useState("Résultats de la recherche");
 
-
   const onClickSearch = async (e) => {
     e.preventDefault();
-    // const response = await jsonServer.get(`/users?pseudo=${userSearch}`);
-    if (!response.data.length) {
-      setUser({});
-      setMessage("Compte inexistant");
+    if (userSearch === "") {
+      setMessage("Veuillez remplir le champ");
     } else {
-      setUser(response.data[0]);
-      setMessage(response.data[0].pseudo);
+      const response = await api.post(
+        `/search-user`,
+        { user: userSearch },
+        { withCredentials: true }
+      );
+      if (response.data === null) {
+        setUser({});
+        setMessage("Compte inexistant");
+      } else {
+        console.log(response.data);
+        setUser(response.data.pseudo);
+        setMessage(response.data.pseudo);
+      }
     }
   };
-
-
 
   return (
     <div className="searchList">
@@ -36,7 +42,7 @@ const SearchList = () => {
         />
         {Object.keys(user).length ? (
           <div className="searchList_form_result">
-            <Link to={`/search-list/${user.pseudo}`}>{message}</Link>
+            <Link to={`/search-list/${user}`}>{message}</Link>
           </div>
         ) : (
           <p className="searchList_form_noResult">{message}</p>
@@ -46,7 +52,5 @@ const SearchList = () => {
     </div>
   );
 };
-
-
 
 export default SearchList;

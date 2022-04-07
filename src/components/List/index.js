@@ -19,7 +19,6 @@ const List = () => {
 
   const fetchData = async () => {
     const movies = await api.get(`/list`, { withCredentials: true });
-    console.log(movies.data.moviesUser.Movies);
     const moviesArray = movies.data.moviesUser.Movies;
     let newMoviesArray = [];
     for (const movie of moviesArray) {

@@ -7,25 +7,37 @@ import api from "src/api";
 import FriendMovie from "./FriendMovie";
 
 const FriendList = () => {
-
   const [movies, setMovies] = useState([]);
 
-  const {pseudo} = useParams();
+  const { pseudo } = useParams();
 
   const [dateOrder, setDateOrder] = useState(true);
   const [titleOrder, setTitleOrder] = useState(false);
   const [scoreOrder, setScoreOrder] = useState(false);
 
   useEffect(async () => {
-    const response = await api.get(
-      `/users?pseudo=${pseudo}&_sort=date&_order=desc`
-    );
-    const user = response.data[0];
-    const userMovie = await api.get(
-      `/movies?userId=${user.id}&_sort=date&_order=desc`
-    );
-    setMovies(userMovie.data);
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    const movies = await api.get(`list-user/${pseudo}`, {
+      withCredentials: true,
+    });
+    console.log(movies.data);
+    const moviesArray = movies.data.moviesUser.Movies;
+    let newMoviesArray = [];
+    for (const movie of moviesArray) {
+      const date = new Date(movie.User_movie.date).toLocaleDateString("fr");
+      const movieObject = {
+        id: movie.id,
+        date,
+        name: movie.name,
+        score: Number(movie.User_movie.score),
+      };
+      newMoviesArray.push(movieObject);
+    }
+    setMovies(newMoviesArray);
+  };
 
   const sortArrayBy = (array, sort, desc) => {
     array.sort(function (a, b) {
@@ -103,6 +115,5 @@ const FriendList = () => {
     </>
   );
 };
-
 
 export default FriendList;
