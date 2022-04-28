@@ -15,9 +15,6 @@ import Header from "../Header";
 import Signin from "../Signin";
 import Signup from "../Signup";
 
-//import locaux
-import carnet from "/src/images/carnet.jpg";
-
 // == Import
 import "./styles.scss";
 
