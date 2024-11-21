@@ -21,8 +21,9 @@ const Signin = () => {
         password,
       });
       console.log(response.data.user);
-      const userId = response.data.user.id;
+      
       if (response.data.user) {
+        const userId = response.data.user.id;
         const result = await api.get("/auth", {
           withCredentials: true,
           headers: {

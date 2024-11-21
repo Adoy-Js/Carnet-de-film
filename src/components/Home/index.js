@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import "./styles.scss";
 
-import api from "src/api";
-
 const Home = () => {
   const navigate = useNavigate();
   

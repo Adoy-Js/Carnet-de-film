@@ -92,9 +92,9 @@ const FriendList = () => {
   };
 
   return (
-    <>
-      <h1 className="titleList">Liste de {pseudo}</h1>
-      <table className="list-movies">
+    <div className="movies-list">
+      <h1 className="movies-list_titleList">Liste de {pseudo}</h1>
+      <table className="movies-list_list-movies">
         <thead>
           <tr>
             <th className="list-movies_date" onClick={(e) => moviesOrder(e)}>
@@ -112,7 +112,7 @@ const FriendList = () => {
           <FriendMovie movies={movies} />
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

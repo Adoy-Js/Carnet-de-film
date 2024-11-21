@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import api from "src/api";
 
 import { FaTrash } from "react-icons/fa";

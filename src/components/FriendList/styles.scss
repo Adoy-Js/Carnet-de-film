@@ -1,4 +1,63 @@
-.titleList{
+@use "../../styles/vars";
+
+.movies-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+&_titleList{
     font-size: 2em;
-    margin: 2em;
+    margin-top: 1em;
+}
+  &_list-movies {
+    margin-top: 5em;
+    padding: 2em;
+    width: 50%;
+    background-color: vars.$primary-color;
+    border: 1px solid vars.$secondary-color;
+    text-align: center;
+
+    & th {
+      padding: 1em;
+      font-size: 1.9em;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: vars.$secondary-color;
+        color: vars.$primary-color;
+        cursor: pointer;
+      }
+    }
+
+    & td {
+      padding: 1em;
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .movies-list {
+    &_list-movies {
+      min-width: 80%;
+    }
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0.625em;
+  }
+
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
 }

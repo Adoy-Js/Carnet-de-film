@@ -87,8 +87,8 @@ const List = () => {
   };
 
   return (
-    <>
-      <div className="addbutton">
+    <div className="movies-list">
+      <div className="movies-list_addbutton">
         <Link to={"/add-movie"}>
           {" "}
           <button className="button">Ajouter un film </button>
@@ -99,7 +99,7 @@ const List = () => {
           <button className="button"> Rechercher une liste </button>
         </Link>
       </div>
-      <table className="list-movies">
+      <table className="movies-list_list-movies">
         <thead>
           <tr>
             <th className="list-movies_date" onClick={(e) => moviesOrder(e)}>
@@ -117,7 +117,7 @@ const List = () => {
           <Movie movies={movies} />
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
